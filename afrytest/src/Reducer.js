@@ -13,12 +13,6 @@ const initState = {
           companyName: action.companyName
         }
    
-        
-
-        
-
-        
-      
       // you can have as many case statements as you need
      
       default: 
