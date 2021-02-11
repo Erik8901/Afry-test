@@ -2,50 +2,63 @@ import React, { useState, useEffect}  from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
 //CSS
-//import './App.css';
+import './styles/stylesCreateCompany.css'
 
 function CreateCompany() {
-    const dispatch = useDispatch()
-    const company = useSelector(state => state.companyName)
-    const [userCompany1, setUserCompany1] = useState('');
-    const [test, setTest] = useState("");
-    
-    //console.log(company)
+  const [company, setCompany] = useState({
+      companyName: '',
+      employees: [{name:"testPerson1", age: "33"}, {name:"testPerson2", age: "34"}]
+    });
+   
 
     useEffect( () => {
         
        
-        //var x = localStorage.getItem("companyName");
-       
-        //setTest(x)
-       
-        // dispatch({ 
-        //     type: 'SET_COMPANY"',
-        //     companyName: test
-        // })
-        
-        
-    },[test]) //useEffect
+  },[]) //useEffect
 
-    function sendCompanyName(userCompany1) {
-        
+  const handleInput = (event) => {
+    setCompany((prevProps) => ({
+              ...prevProps,
+              [event.target.name]: event.target.value
+      }));
+};
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+   // console.log(companyName)
+
+    var companyList = JSON.parse(localStorage.getItem("companyList"));
+      if(companyList == null) companyList = [];
+      localStorage.setItem("newCompany", JSON.stringify(company));
+      companyList.push(company);
+      localStorage.setItem("companyList", JSON.stringify(companyList));
+      
+      //localStorage.clear();
     
-        //localStorage.setItem('companyName', userCompany1)
-        
-         dispatch({ 
-            type: 'SET_COMPANY',
-            companyName: userCompany1
-        })
-    }
+};
+
+
+    
   return (
-    <div className="CreateCompany">
-      <header className="create-company-container">
-            CreateCompany
-            <input type="text" onChange={e => setUserCompany1(e.target.value)}></input>
-            <button onClick={() => sendCompanyName(userCompany1)}>Push</button>
-            <span>{test}</span>
-      </header>
-    </div>
+    <div className="create-company-container">
+            <span>Create a Company</span>
+            <form onSubmit={handleSubmit}>
+                    <div className="form-control">
+                        <label>Company-Name</label>
+                            <input
+                                type="text"
+                                name="companyName"
+                                value={company.name}
+                                onChange={handleInput}
+                            />
+                    </div>
+                    <div className="form-control">
+                            <button type="submit">Create Company</button>
+                    </div>
+              </form>
+      </div>
+    
   );
 }
 

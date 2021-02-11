@@ -1,11 +1,19 @@
 const initState = {
-    companyName: ''
+    companyName: '',
+    allPersons: []
 }
   
   
   const Reducer = (state=initState,action) => {
 
     switch (action.type){
+
+      case "SET_PERSONS":
+        return {
+          ...state,
+          allPersons: action. allPersons
+        }
+
       
       case "SET_COMPANY":
         return {

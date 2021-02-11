@@ -1,0 +1,17 @@
+.handle-company-container {
+    margin-top: 3rem;
+}
+
+
+ul {
+    list-style: none;
+}
+
+.li-container {
+    padding: 0.3rem;
+}
+
+.li-container:hover {
+    background:yellow;
+    cursor: pointer;
+}

@@ -2,22 +2,24 @@ import React, { useState, useEffect}  from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
 //CSS
-//import './App.css';
+import './styles/stylesCreatePerson.css'
 
-function CreateUser() {
-    const [user, setUser] = useState({
+function CreatePerson() {
+    const dispatch = useDispatch()
+    const [person, setPerson] = useState({
         name: "",
         lastName: "",
-        password: ""
-      });
+        company: ""
+    });
     
         useEffect( () => {
-                var existingEntries = JSON.parse(localStorage.getItem("activeUsers"))
-                console.log(existingEntries)
+                var existingEntries = JSON.parse(localStorage.getItem("activePersons"))
+              //  console.log(existingEntries)
+
         },[]) //useEffect
 
         const handleInput = (event) => {
-                setUser((prevProps) => ({
+              setPerson((prevProps) => ({
                         ...prevProps,
                         [event.target.name]: event.target.value
                 }));
@@ -26,11 +28,20 @@ function CreateUser() {
         const handleSubmit = (event) => {
                 event.preventDefault();
             
-                var userList = JSON.parse(localStorage.getItem("activeUsers"));
-                if(userList == null) userList = [];
-                localStorage.setItem("entry", JSON.stringify(user));
-                userList.push(user);
-                localStorage.setItem("activeUsers", JSON.stringify(userList));
+                var personList = JSON.parse(localStorage.getItem("activePersons"));
+                if(personList == null) personList = [];
+                localStorage.setItem("entry", JSON.stringify(person));
+                personList.push(person);
+                localStorage.setItem("activePersons", JSON.stringify(personList));
+
+
+                var activePersons = JSON.parse(localStorage.getItem("activePersons"))
+                console.log(activePersons)
+
+                //  dispatch({ 
+                //     type: 'SET_COMPANY"',
+                //     allPersons: activeUsers
+                // })
 
            
                 // // setter
@@ -40,19 +51,20 @@ function CreateUser() {
                 // // remove
                 // localStorage.removeItem('myData');
                 // // remove all
-                // localStorage.clear();
+                 //localStorage.clear();
 };
     
 return (
-    <div className="CreateUser">
-            <div className="create-user-container">
+    <div className="createPerson">
+            <div className="create-person-container">
+                <span>Create A Person</span>
                 <form onSubmit={handleSubmit}>
                     <div className="form-control">
                         <label>Name</label>
                             <input
                                 type="text"
                                 name="name"
-                                value={user.name}
+                                value={person.name}
                                 onChange={handleInput}
                             />
                     </div>
@@ -61,21 +73,21 @@ return (
                             <input
                                 type="text"
                                 name="lastName"
-                                value={user.LastName}
+                                value={person.LastName}
                                 onChange={handleInput}
                             />
                     </div>
                     <div className="form-control">
-                        <label>Password</label>
+                        <label>Company</label>
                             <input
-                                type="password"
-                                name="password"
-                                value={user.password}
+                                type="text"
+                                name="company"
+                                value={person.company}
                                 onChange={handleInput}
                             />
                     </div>
                         <div className="form-control">
-                            <button type="submit">Create User</button>
+                            <button type="submit">Create Person</button>
                         </div>
             </form>
         </div>
@@ -83,4 +95,4 @@ return (
   );
 }
 
-export default CreateUser;
+export default CreatePerson;

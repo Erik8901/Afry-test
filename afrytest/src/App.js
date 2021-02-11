@@ -6,7 +6,7 @@ import './App.css';
 //Components
 import CreateCompany from './components/CreateCompany'
 import HandleCompany from './components/HandleCompany'
-import CreateUser from './components/CreateUser'
+import CreatePerson from './components/CreatePerson'
 
 function App() {
   //const companyName = useSelector(state => state.companyName)
@@ -14,11 +14,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         AFRY TEST + REDUXX
-        <CreateUser />
+        <CreatePerson />
         
-        {/* <CreateCompany />
+        <CreateCompany />
 
-        <HandleCompany /> */}
+        <HandleCompany />
       </header>
     </div>
   );
