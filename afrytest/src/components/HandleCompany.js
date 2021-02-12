@@ -40,12 +40,14 @@ function addEmployees() {
 }
 
 function addPersonToCompany(person) {
- 
-  var selectedCompanyEmpList = selectedCompany.employees
+//  var selectedCompanyEmpList = selectedCompany.employees
+//   selectedCompanyEmpList.push(person)
+//  console.log(selectedCompanyEmpList)
+
+ var companyList = JSON.parse(localStorage.getItem("companyList"))
+    console.log(companyList[0].employees)
+    console.log(selectedCompany)
   
-  selectedCompanyEmpList.push(person)
- 
-  console.log(selectedCompanyEmpList)
  
   //localStorage.setItem("addPerson", JSON.stringify(selectedCompanyEmpList));
    //var testObject = selectedCompanyEmpList
