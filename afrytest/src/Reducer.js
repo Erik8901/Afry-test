@@ -1,6 +1,7 @@
 const initState = {
     companyName: '',
-    allPersons: []
+    allPersons: [],
+    selectedCompany: {}
 }
   
   
@@ -20,6 +21,15 @@ const initState = {
           ...state,
           companyName: action.companyName
         }
+
+        case "SET_SELECTED-COMPANY":
+          return {
+          ...state,
+          companyName: action.selectedCompany
+        }
+
+
+      
    
       // you can have as many case statements as you need
      

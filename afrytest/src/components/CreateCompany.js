@@ -10,10 +10,8 @@ function CreateCompany() {
       employees: [{name:"testPerson1", age: "33"}, {name:"testPerson2", age: "34"}]
     });
    
-
     useEffect( () => {
         
-       
   },[]) //useEffect
 
   const handleInput = (event) => {
@@ -26,21 +24,15 @@ function CreateCompany() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   // console.log(companyName)
-
+   
     var companyList = JSON.parse(localStorage.getItem("companyList"));
-      if(companyList == null) companyList = [];
-      localStorage.setItem("newCompany", JSON.stringify(company));
-      companyList.push(company);
-      localStorage.setItem("companyList", JSON.stringify(companyList));
-      
-      //localStorage.clear();
-    
+        if(companyList == null) companyList = [];
+        localStorage.setItem("newCompany", JSON.stringify(company));
+        companyList.push(company);
+        localStorage.setItem("companyList", JSON.stringify(companyList));
 };
 
-
-    
-  return (
+return (
     <div className="create-company-container">
             <span>Create a Company</span>
             <form onSubmit={handleSubmit}>

@@ -77,7 +77,7 @@ return (
                                 onChange={handleInput}
                             />
                     </div>
-                    <div className="form-control">
+                    {/* <div className="form-control">
                         <label>Company</label>
                             <input
                                 type="text"
@@ -85,7 +85,7 @@ return (
                                 value={person.company}
                                 onChange={handleInput}
                             />
-                    </div>
+                    </div> */}
                         <div className="form-control">
                             <button type="submit">Create Person</button>
                         </div>
