@@ -8,7 +8,7 @@ import './styles/StylesHandleCompany.css'
 function HandleCompany() {
   const dispatch = useDispatch()
   const [companyEmployees, setCompanyEmployees] = useState([]);
-  const [showPersons, setShpwPersons] = useState(false);
+  const [showPersons, setShowPersons] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState({});
   var activePersons = JSON.parse(localStorage.getItem("activePersons"))
  // console.log(activePersons)
@@ -29,6 +29,8 @@ function handlePerson(person) {
 
 function handleCompany(company) {
  // console.log(company.employees)
+ 
+ 
   setSelectedCompany(company)
   localStorage.setItem('selectedCompany',JSON.stringify(company));
     
@@ -36,29 +38,36 @@ function handleCompany(company) {
 
 
 function addEmployees() {
-   setShpwPersons(!showPersons)
+   setShowPersons(!showPersons)
 }
 
-function addPersonToCompany(person) {
-//  var selectedCompanyEmpList = selectedCompany.employees
-//   selectedCompanyEmpList.push(person)
-//  console.log(selectedCompanyEmpList)
+function addPersonToCompany(person, company) {
+  var selectedCompanyEmpList = selectedCompany.employees
+  selectedCompanyEmpList.push(person)
+ 
+  var selCompany = JSON.parse(localStorage.getItem("selectedCompany"))
 
- var companyList = JSON.parse(localStorage.getItem("companyList"))
-    console.log(companyList[0].employees)
-    console.log(selectedCompany)
+  selCompany.employees = selectedCompanyEmpList
+   // console.log(selCompany.employees)
+
+  var companyList = JSON.parse(localStorage.getItem("companyList"))
+    //console.log(companyList[0].employees)
+
+    console.log(selCompany.companyName)
+    console.log(companyList)
+
+    for(let i=0; i < companyList.length; i++) {
+      console.log(companyList[i].companyName)
+      if(selCompany.companyName === companyList[i].companyName) {
+        localStorage.setItem("newentry", JSON.stringify(selCompany));
+        companyList[i].employees = selCompany.employees.slice(0)
+        localStorage.setItem("companyList", JSON.stringify(companyList));
+      }
+    }
+
   
  
-  //localStorage.setItem("addPerson", JSON.stringify(selectedCompanyEmpList));
-   //var testObject = selectedCompanyEmpList
-  // var companyList = JSON.parse(localStorage.getItem("selectedCompany"))
-  // console.log(companyList.employees)
-
-  
-  // localStorage.setItem('selectedCompany"', JSON.stringify(companyList.employees));
-  //companyList = testObject;
-  
-  //localStorage.setItem("companyList", JSON.stringify(companyList));
+ 
 
 
 
