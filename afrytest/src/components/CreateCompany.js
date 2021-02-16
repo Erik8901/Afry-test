@@ -7,7 +7,7 @@ import './styles/stylesCreateCompany.css'
 function CreateCompany() {
   const [company, setCompany] = useState({
       companyName: '',
-      employees: [{name:"testPerson1", age: "33"}, {name:"testPerson2", age: "34"}]
+      employees: []
     });
    
     useEffect( () => {

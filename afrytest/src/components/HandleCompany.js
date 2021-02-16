@@ -30,7 +30,6 @@ function handleCompany(company) {
   setSelectedCompany(company)
   localStorage.setItem('selectedCompany',JSON.stringify(company));
   setShowSelectedCompany(!showSelectedCompany)
-  console.log(company)
 }
 
 
@@ -57,6 +56,22 @@ function addPersonToCompany(person) {
   setCompanyEmployees(selCompany.employees)
 }
 
+function removeEmployee(emp) {
+  var selCompany = JSON.parse(localStorage.getItem("selectedCompany"))
+  const newArr = selCompany.employees.filter(e => e.name !== emp.name)
+  selCompany.employees = newArr
+  
+ companyList.forEach(comp => {
+    if(selCompany.companyName === comp.companyName) {
+        localStorage.setItem("newentry", JSON.stringify(selCompany));
+        comp.employees = selCompany.employees.slice(0)
+        localStorage.setItem("companyList", JSON.stringify(companyList));
+    }
+});
+  
+setSelectedCompany(selCompany)
+}
+
 return (
     <div className="handle-company-container">
      <span>EDIT COMPANY</span>
@@ -65,25 +80,33 @@ return (
                 <ul>
                     { companyList.map(function (company, index) {
                         return (<div className="li-container" key={index}>
-                                <li onClick={() => handleCompany(company)}>
-                                  <span>Company-Name: {company.companyName}</span>
-                                    { showSelectedCompany ?
-                                    <div className="selected-company-info" >
-                                      <ul>
-                                        { companyEmployees.map((emp,idx) => 
-                                        <li key={idx}>{emp.name}</li>)}
-                                      </ul>
-                                      <button onClick={() => addEmployees()}>Add Emplyees</button>
-                                    </div>
-                                    : null }
-                                    
-                               </li> 
-                               
-                               </div>)
+                                    <li onClick={() => handleCompany(company)}>
+                                        <span>Company-Name: {company.companyName}</span>
+                                    </li> 
+                                </div>)
                       })}
                 </ul>
             }
-        </div>
+      </div>
+
+      { showSelectedCompany ?
+      <div className="company-info-container">
+              <span>{selectedCompany.companyName}</span>
+                { selectedCompany.employees.map((emp, index) => {
+                  return <li key={index}>
+                            {emp.name}
+                            <button onClick={() => removeEmployee(emp)}>X</button>
+                          </li>
+              })}
+              <button onClick={() => addEmployees()}>Add Emplyees</button>
+      </div>
+      : null }
+      
+
+
+
+
+
             { showPersons ?
         <div className="person-list-container">
           
