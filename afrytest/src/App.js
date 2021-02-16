@@ -18,13 +18,13 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="div-create-container">
           <CreatePerson />
           <CreateCompany />
-          
-          <h3 onClick={() => showCompanies()}>Handle Companies:</h3>
+      </div>
+          <h3 onClick={() => showCompanies()}>Show Companies:</h3>
           { showAllCompanies ? <HandleCompany /> : null }
-      </header>
+      
     </div>
   );
 }

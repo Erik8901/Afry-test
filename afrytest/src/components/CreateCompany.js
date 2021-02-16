@@ -34,7 +34,7 @@ function CreateCompany() {
 
 return (
     <div className="create-company-container">
-            <span>Create a Company</span>
+            <span className="title">Create a Company</span>
             <form onSubmit={handleSubmit}>
                     <div className="form-control">
                         <label>Company-Name</label>
@@ -45,8 +45,8 @@ return (
                                 onChange={handleInput}
                             />
                     </div>
-                    <div className="form-control">
-                            <button type="submit">Create Company</button>
+                    <div className="form-btn">
+                        <button className="btn-submit" type="submit">Create Company</button>
                     </div>
               </form>
       </div>

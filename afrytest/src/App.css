@@ -1,5 +1,23 @@
 .App {
   text-align: center;
-  }
+  color: #fff;
+}
+
+.div-create-container {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: row;
+}
+
+h3 {
+  margin-top: 6rem;
+  cursor: pointer;
+  text-align: left;
+  margin-left: 12%;
+}
+
+h3:hover {
+  text-decoration: underline;
+}
 
 
