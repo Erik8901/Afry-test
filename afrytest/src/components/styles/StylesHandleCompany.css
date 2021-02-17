@@ -1,6 +1,14 @@
 .handle-company-container {
-    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
     color: #fff;
+}
+
+.company-list-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 9.3rem;
+    text-align: left;
 }
 
 
@@ -8,11 +16,49 @@ ul {
     list-style: none;
 }
 
-.li-container {
+.companies-li {
     padding: 0.3rem;
 }
 
-.li-container:hover {
-    background:yellow;
+.companies-li:hover {
+    color: #000;
     cursor: pointer;
+}
+
+.company-info-container {
+    background: #466289;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
+
+table {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.company-name {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+
+.company-employees {
+    font-size: 1rem;
+}
+
+.remove {
+    color: #FF0000;
+    cursor: pointer;
+}
+
+.add-employee {
+    margin-top: 1rem;
+    position: absolute;
+}
+
+.person-list-container {
+    padding-bottom: 6rem;
 }

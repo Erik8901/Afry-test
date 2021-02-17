@@ -74,31 +74,44 @@ setSelectedCompany(selCompany)
 
 return (
     <div className="handle-company-container">
-     <span>EDIT COMPANY</span>
         <div className="company-list-container">
             { companyList === null ? <span>no companies</span> : 
                 <ul>
                     { companyList.map(function (company, index) {
-                        return (<div className="li-container" key={index}>
-                                    <li onClick={() => handleCompany(company)}>
-                                        <span>Company-Name: {company.companyName}</span>
-                                    </li> 
-                                </div>)
+                        return <li className="companies-li" key={index} onClick={() => handleCompany(company)}>
+                                        <span>{company.companyName}</span>
+                              </li> 
+                                
                       })}
                 </ul>
             }
       </div>
 
+      <span>Show Persons</span>
+
       { showSelectedCompany ?
       <div className="company-info-container">
-              <span>{selectedCompany.companyName}</span>
+              <span className="company-name">{selectedCompany.companyName}</span>
+                <span className="company-employees">Company Employees: </span>
+                <table>
+                  <thead>
+                  <tr>
+                      <th>Firstname</th>
+                      <th>Lastname</th>
+                  </tr>
+                  </thead>
+                  <tbody>
                 { selectedCompany.employees.map((emp, index) => {
-                  return <li key={index}>
-                            {emp.name}
-                            <button onClick={() => removeEmployee(emp)}>X</button>
-                          </li>
+                  return <tr key={index}>
+                            <td>{emp.name}</td>
+                            <td>{emp.lastName}</td>
+                            <td className="remove" onClick={() => removeEmployee(emp)}> X</td>
+                          </tr>
               })}
-              <button onClick={() => addEmployees()}>Add Emplyees</button>
+              </tbody>
+              <button className="add-employee" onClick={() => addEmployees()}>Add Emplyees</button>
+              
+              </table>
       </div>
       : null }
       
@@ -109,17 +122,28 @@ return (
 
             { showPersons ?
         <div className="person-list-container">
-          
+            <span>Persons</span>
             { activePersons === null ? <span>no persons</span> : 
-                <ul>
+                
+                  <table>
+                    <thead>
+                    <tr>
+                      <th>Firstname</th>
+                      <th>Lastname</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     { activePersons.map((person, index) =>{
-                        return <li key={index} onClick={() => handlePerson(person)}>
-                                  <span>Name: {person.name}</span>
-                                  <span>Lastname: {person.lastName}</span>
+                        return <tr key={index} onClick={() => handlePerson(person)}>
+                                  <td>{person.name}</td>
+                                  <td>{person.lastName}</td>
                                   <button onClick={() => addPersonToCompany(person)}>Add to Company</button>
-                                </li>
+                                </tr>
+                                
                     })}
-                </ul>
+                    </tbody>
+                    </table>
+                
             }
            </div>  
           : null } 
