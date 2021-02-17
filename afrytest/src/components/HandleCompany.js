@@ -139,8 +139,7 @@ return (
                                   <td>{person.lastName}</td>
                                   <button onClick={() => addPersonToCompany(person)}>Add to Company</button>
                                 </tr>
-                                
-                    })}
+                        })}
                     </tbody>
                     </table>
                 
