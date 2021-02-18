@@ -32,11 +32,10 @@ function CreatePerson() {
                 localStorage.setItem("entry", JSON.stringify(person));
                 personList.push(person);
                 localStorage.setItem("activePersons", JSON.stringify(personList));
-                
-               document.getElementsByTagName("input")[0].value = ""
-               document.getElementsByTagName("input")[1].value = ""
-            
-};
+
+                document.getElementsByTagName("input")[0].value = ""
+                document.getElementsByTagName("input")[1].value = ""
+    };
     
 return (
     <div className="create-person-container">
