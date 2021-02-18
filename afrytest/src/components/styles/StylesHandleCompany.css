@@ -11,7 +11,6 @@
     text-align: left;
 }
 
-
 ul {
     list-style: none;
 }
@@ -30,6 +29,8 @@ ul {
     display: flex;
     flex-direction: column;
     margin-bottom: 3rem;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 .show-persons {
@@ -50,7 +51,6 @@ table {
     margin-top: 1rem;
 }
 
-
 .company-employees {
     font-size: 1rem;
 }
@@ -66,8 +66,16 @@ table {
     border: none;
     padding: 0.3rem;
     cursor: pointer;
+    margin-top: 2rem;
 }
 
 .person-list-container {
     padding-bottom: 6rem;
+}
+
+.close-persons-btn {
+    position: absolute;
+    right: 31%;
+    color: #000;
+    cursor: pointer;
 }

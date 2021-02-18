@@ -1,6 +1,5 @@
 import React, { useState, useEffect}  from 'react'
 
-
 //CSS
 import './styles/stylesCreateCompany.css'
 
@@ -31,9 +30,7 @@ function CreateCompany() {
         companyList.push(company);
         localStorage.setItem("companyList", JSON.stringify(companyList));
 
-       
-        
-        document.getElementsByTagName("input")[2].value = ""
+       document.getElementsByTagName("input")[2].value = ""
 };
 
 return (

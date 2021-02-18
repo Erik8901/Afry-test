@@ -2,7 +2,9 @@
   text-align: center;
   color: #fff;
   overflow-y: hidden;
-  }
+  flex-direction: column;
+  display: flex;
+}
 
 .div-create-container {
     margin-top: 6rem;
@@ -20,6 +22,16 @@ h3 {
 
 h3:hover {
   text-decoration: underline;
+}
+
+.show-container {
+  flex-direction: column;
+  display: flex;
+ 
+}
+
+.show-persons {
+  left: 50%;
 }
 
 
