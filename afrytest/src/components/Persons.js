@@ -13,10 +13,6 @@ function Persons() {
     setPersonList(activepersons)
   }, []) //useEffect
 
-
-
-
-
   return (
     <div className="persons-container">
       { PersonList === null ? <span>No Persons</span> :
