@@ -1,11 +1,11 @@
 import React, { useState, useEffect}  from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+
 
 //CSS
 import './styles/stylesCreatePerson.css'
 
 function CreatePerson() {
-    const dispatch = useDispatch()
+    
     const [person, setPerson] = useState({
         name: "",
         lastName: "",
@@ -32,16 +32,16 @@ function CreatePerson() {
                 localStorage.setItem("entry", JSON.stringify(person));
                 personList.push(person);
                 localStorage.setItem("activePersons", JSON.stringify(personList));
-
-
-                var activePersons = JSON.parse(localStorage.getItem("activePersons"))
-                console.log(activePersons)
+                
+               document.getElementsByTagName("input")[0].value = ""
+               document.getElementsByTagName("input")[1].value = ""
+            
 };
     
 return (
     <div className="create-person-container">
                 <span className="title">Create A Person</span>
-                <form onSubmit={handleSubmit}>
+                <form id="myForm" onSubmit={handleSubmit}>
                     <div className="form-control">
                         <label>First Name :</label>
                             <input

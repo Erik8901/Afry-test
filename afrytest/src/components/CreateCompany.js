@@ -1,5 +1,5 @@
 import React, { useState, useEffect}  from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+
 
 //CSS
 import './styles/stylesCreateCompany.css'
@@ -30,6 +30,10 @@ function CreateCompany() {
         localStorage.setItem("newCompany", JSON.stringify(company));
         companyList.push(company);
         localStorage.setItem("companyList", JSON.stringify(companyList));
+
+       
+        
+        document.getElementsByTagName("input")[2].value = ""
 };
 
 return (
@@ -42,6 +46,7 @@ return (
                                 type="text"
                                 name="companyName"
                                 value={company.name}
+                                placeholder="Company Name"
                                 onChange={handleInput}
                             />
                     </div>

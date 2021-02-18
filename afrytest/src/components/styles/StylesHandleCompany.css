@@ -32,6 +32,12 @@ ul {
     margin-bottom: 3rem;
 }
 
+.show-persons {
+    position: absolute;
+    top: 50.7%;
+    left: 50%
+}
+
 table {
     width: 50%;
     margin: 0 auto;
@@ -55,8 +61,11 @@ table {
 }
 
 .add-employee {
-    margin-top: 1rem;
-    position: absolute;
+    background: #7D7B7B;
+    color: #fff;
+    border: none;
+    padding: 0.3rem;
+    cursor: pointer;
 }
 
 .person-list-container {

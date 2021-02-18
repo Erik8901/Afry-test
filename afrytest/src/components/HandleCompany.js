@@ -1,21 +1,21 @@
 import React, { useState, useEffect}  from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+
 
 //styles
 import './styles/StylesHandleCompany.css'
 
 
 function HandleCompany() {
-  const dispatch = useDispatch()
+ 
   const [companyEmployees, setCompanyEmployees] = useState([]);
   const [showPersons, setShowPersons] = useState(false);
   const [showSelectedCompany, setShowSelectedCompany] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState({});
   var activePersons = JSON.parse(localStorage.getItem("activePersons"))
- // console.log(activePersons)
+ 
 
   var companyList = JSON.parse(localStorage.getItem("companyList"))
-   // console.log(companyList)
+  
     
   useEffect( () => {
     
@@ -53,7 +53,7 @@ function addPersonToCompany(person) {
             localStorage.setItem("companyList", JSON.stringify(companyList));
         }
     });
-  setCompanyEmployees(selCompany.employees)
+  
 }
 
 function removeEmployee(emp) {
@@ -87,7 +87,7 @@ return (
             }
       </div>
 
-      <span>Show Persons</span>
+      <h3 className="show-persons" onClick={() => addEmployees()}>Show Persons</h3>
 
       { showSelectedCompany ?
       <div className="company-info-container">
@@ -137,7 +137,7 @@ return (
                         return <tr key={index} onClick={() => handlePerson(person)}>
                                   <td>{person.name}</td>
                                   <td>{person.lastName}</td>
-                                  <button onClick={() => addPersonToCompany(person)}>Add to Company</button>
+                                  <button className="add-employee" onClick={() => addPersonToCompany(person)}>Add to Company</button>
                                 </tr>
                         })}
                     </tbody>
