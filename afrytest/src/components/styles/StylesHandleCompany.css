@@ -62,13 +62,20 @@ table {
     cursor: pointer;
 }
 
-.add-employee {
+.add-employees {
     background: #7D7B7B;
     color: #fff;
     border: none;
     padding: 0.3rem;
     cursor: pointer;
     margin-top: 2rem;
+    width: 20%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.add-employees:hover {
+    text-decoration: underline;
 }
 
 .person-list-container {
@@ -79,5 +86,18 @@ table {
     position: absolute;
     right: 31%;
     color: #000;
+    cursor: pointer;
+}
+
+.add-employee-to-company {
+    background: #7D7B7B;
+    padding: 0.1rem;
+    width: 9rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.add-employee-to-company:hover {
+    text-decoration: underline;
     cursor: pointer;
 }

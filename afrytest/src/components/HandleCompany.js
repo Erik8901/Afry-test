@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 //styles
 import './styles/StylesHandleCompany.css'
 
-
 function HandleCompany() {
   const [showPersons, setShowPersons] = useState(false);
   const [showSelectedCompany, setShowSelectedCompany] = useState(false);
@@ -23,7 +22,6 @@ function HandleCompany() {
     setShowSelectedCompany(!showSelectedCompany)
   }
 
-
   function addEmployees() {
     setShowPersons(!showPersons)
   }
@@ -31,10 +29,12 @@ function HandleCompany() {
   function addPersonToCompany(person) {
     var selectedCompanyEmpList = selectedCompany.employees
     selectedCompanyEmpList.push(person)
-
+    
     var selCompany = JSON.parse(localStorage.getItem("selectedCompany"))
     selCompany.employees = selectedCompanyEmpList
-
+    
+    localStorage.setItem('selectedCompany', JSON.stringify(selCompany));
+    setSelectedCompany(selCompany)
     var companyList = JSON.parse(localStorage.getItem("companyList"))
 
     companyList.forEach(comp => {
@@ -44,14 +44,15 @@ function HandleCompany() {
         localStorage.setItem("companyList", JSON.stringify(companyList));
       }
     });
-
   }
 
   function removeEmployee(emp) {
     var selCompany = JSON.parse(localStorage.getItem("selectedCompany"))
     const newArr = selCompany.employees.filter(e => e.name !== emp.name)
     selCompany.employees = newArr
-
+   
+    localStorage.setItem('selectedCompany', JSON.stringify(selCompany));
+    setSelectedCompany(selCompany)
     companyList.forEach(comp => {
       if (selCompany.companyName === comp.companyName) {
         localStorage.setItem("newentry", JSON.stringify(selCompany));
@@ -59,10 +60,8 @@ function HandleCompany() {
         localStorage.setItem("companyList", JSON.stringify(companyList));
       }
     });
-
-    setSelectedCompany(selCompany)
   }
-
+  
   return (
     <div className="handle-company-container">
       <div className="company-list-container">
@@ -98,8 +97,8 @@ function HandleCompany() {
                 </tr>
               })}
             </tbody>
-            <button className="add-employee" onClick={() => addEmployees()}>Add Emplyees</button>
           </table>
+          <button className="add-employees" onClick={() => addEmployees()}>Add Emplyees</button>
         </div>
         : null}
 
@@ -121,7 +120,7 @@ function HandleCompany() {
                   return <tr key={index}>
                     <td>{person.name}</td>
                     <td>{person.lastName}</td>
-                    <button className="add-employee" onClick={() => addPersonToCompany(person)}>Add to Company</button>
+                    <td className="add-employee-to-company" onClick={() => addPersonToCompany(person)}>Add to Company</td>
                   </tr>
                 })}
               </tbody>

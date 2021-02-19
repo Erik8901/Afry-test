@@ -12,8 +12,7 @@ function CreatePerson() {
     });
 
     useEffect(() => {
-        var existingEntries = JSON.parse(localStorage.getItem("activePersons"))
-        //  console.log(existingEntries)
+
 
     }, []) //useEffect
 
@@ -22,7 +21,7 @@ function CreatePerson() {
             ...prevProps,
             [event.target.name]: event.target.value
         }));
-    };
+    }; 
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -33,16 +32,20 @@ function CreatePerson() {
         personList.push(person);
         localStorage.setItem("activePersons", JSON.stringify(personList));
 
-        setPerson((prevProps) => ({
-            ...prevProps,
-            [event.target.name]: ""
-        }));
+        let inputs = document.getElementsByTagName("input")
+        inputs[0].value = ""
+        inputs[1].value = ""
+
+        
+        // for (let i = 0; i < inputs.length; i++) {
+        //     inputs[i].value = ""
+        // }
     };
 
     return (
         <div className="create-person-container">
             <span className="title">Create A Person</span>
-            <form onSubmit={handleSubmit}>
+            <form id="test" onSubmit={handleSubmit}>
                 <div className="form-control">
                     <label>First Name :</label>
                     <input
@@ -58,7 +61,7 @@ function CreatePerson() {
                     <input
                         type="text"
                         name="lastName"
-                        value={person.LastName}
+                        value={person.lastName}
                         placeholder="Last Name"
                         onChange={handleInput}
                     />
